@@ -204,50 +204,24 @@ main:AddToggle({
 	end    
 })
 
+local rodequiped = false
+
 autoCastConnection = LocalCharacter.ChildAdded:Connect(function(child)
-    if child:IsA("Tool") and child:FindFirstChild("events"):WaitForChild("cast") ~= nil and autoCast then
-        task.wait(autoCastDelay)
-        if autoCastMode == "Legit" then
-            VirtualInputManager:SendMouseButtonEvent(0, 0, 0, true, LocalPlayer, 0)
-            HumanoidRootPart.ChildAdded:Connect(function()
-                if HumanoidRootPart:FindFirstChild("power") ~= nil and HumanoidRootPart.power.powerbar.bar ~= nil then
-                    HumanoidRootPart.power.powerbar.bar.Changed:Connect(function(property)
-                        if property == "Size" then
-                            if HumanoidRootPart.power.powerbar.bar.Size == UDim2.new(1, 0, 1, 0) then
-                                VirtualInputManager:SendMouseButtonEvent(0, 0, 0, false, LocalPlayer, 0)
-                            end
-                        end
-                    end)
-                end
-            end)
-        elseif autoCastMode == "Rage" then
-            child.events.cast:FireServer(100)
-        end
+    if child:IsA("Tool") and child:FindFirstChild("events"):WaitForChild("cast") ~= nil and autoCast == true then
+			rodequiped = true
+	task.spawn(function()
+					while task.wait(autoCastDelay) and rodequiped == true do
+					child.events.cast:FireServer(100)
+					end
+	end)
     end
 end)
 
-autoCastConnection2 = PlayerGUI.ChildRemoved:Connect(function(GUI)
-    local Tool = LocalCharacter:FindFirstChildOfClass("Tool")
-    if GUI.Name == "reel" and autoCast == true and Tool ~= nil and Tool:FindFirstChild("events"):WaitForChild("cast") ~= nil then
-        task.wait(autoCastDelay)
-        if autoCastMode == "Legit" then
-            VirtualInputManager:SendMouseButtonEvent(0, 0, 0, true, LocalPlayer, 0)
-            HumanoidRootPart.ChildAdded:Connect(function()
-                if HumanoidRootPart:FindFirstChild("power") ~= nil and HumanoidRootPart.power.powerbar.bar ~= nil then
-                    HumanoidRootPart.power.powerbar.bar.Changed:Connect(function(property)
-                        if property == "Size" then
-                            if HumanoidRootPart.power.powerbar.bar.Size == UDim2.new(1, 0, 1, 0) then
-                                VirtualInputManager:SendMouseButtonEvent(0, 0, 0, false, LocalPlayer, 0)
-                            end
-                        end
-                    end)
-                end
-            end)
-        elseif autoCastMode == "Rage" then
-            Tool.events.cast:FireServer(100)
-        end
-    end
-end)
+autoCastConnection2 = LocalCharacter.ChildRemoved:Connect(function(child)
+if child:IsA("Tool") and child:FindFirstChild("events"):WaitForChild("cast") ~= nil then
+			rodequiped = false
+		end
+	end)
 
 main:AddToggle({
     Name = "Auto Cast",
