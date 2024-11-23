@@ -16,10 +16,6 @@ local main = Window:MakeTab({
     PremiumOnly = false;
   })
 
-local Section = main:AddSection({
-	Name = "Farm"
-})
-
 local teleportSpots = {}
 
 local itemSpots = {
@@ -289,10 +285,6 @@ local lpc = Window:MakeTab({
     Icon = "rbxassetid://1402032193";
     PremiumOnly = false;
 })
-
-lpc:AddSection({
-    Name = "Couldn't find a misc image lol";
-  })
 
 
 lpc:AddToggle({
