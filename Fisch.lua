@@ -232,7 +232,7 @@ main:AddToggle({
 })
 
 local tptab = Window:MakeTab({
-    Name "Teleport";
+    Name = "Teleport";
     Icon = "rbxassetid://12941020168";
     PremiumOnly = false;
   })
