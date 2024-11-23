@@ -252,7 +252,7 @@ tptab:AddButton({
     Name = "Teleport to place";
     Callback = function()
       if teleportSpots ~= nil and HumanoidRootPart ~= nil then
-            HumanoidRootPart.CFrame = TpSpotsFolder:FindFirstChild(Value).CFrame + Vector3.new(0, 5, 0)
+            HumanoidRootPart.CFrame = TpSpotsFolder:FindFirstChild(tplace).CFrame + Vector3.new(0, 5, 0)
         end
     end
   })
