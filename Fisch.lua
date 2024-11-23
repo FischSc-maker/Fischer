@@ -1,3 +1,84 @@
+if game.PlaceID ~= 16732694052 then return end
+
+--[=[
+ d888b  db    db d888888b      .d888b.      db      db    db  .d8b.  
+88' Y8b 88    88   `88'        VP  `8D      88      88    88 d8' `8b 
+88      88    88    88            odD'      88      88    88 88ooo88 
+88  ooo 88    88    88          .88'        88      88    88 88~~~88 
+88. ~8~ 88b  d88   .88.        j88.         88booo. 88b  d88 88   88    @uniquadev
+ Y888P  ~Y8888P' Y888888P      888888D      Y88888P ~Y8888P' YP   YP  CONVERTER 
+]=]
+
+-- Instances: 5 | Scripts: 2 | Modules: 0 | Tags: 0
+local G2L = {};
+
+-- StarterGui.FerModz
+G2L["1"] = Instance.new("ScreenGui", game.CoreGui);
+G2L["1"]["Name"] = [[FerModz]];
+G2L["1"]["ZIndexBehavior"] = Enum.ZIndexBehavior.Sibling;
+
+
+-- StarterGui.FerModz.Open
+G2L["2"] = Instance.new("ImageButton", G2L["1"]);
+G2L["2"]["BorderSizePixel"] = 0;
+G2L["2"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["2"]["Image"] = [[http://www.roblox.com/asset/?id=138070842]];
+G2L["2"]["Size"] = UDim2.new(0.10391, 0, 0.15565, 0);
+G2L["2"]["Name"] = [[Open]];
+G2L["2"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["2"]["Position"] = UDim2.new(0.20378, 0, 0.14925, 0);
+
+
+-- StarterGui.FerModz.Open.UICorner
+G2L["3"] = Instance.new("UICorner", G2L["2"]);
+
+
+
+-- StarterGui.FerModz.Open.Open
+G2L["4"] = Instance.new("LocalScript", G2L["2"]);
+G2L["4"]["Name"] = [[Open]];
+
+
+-- StarterGui.FerModz.Nnaannsnsnsnsns
+G2L["5"] = Instance.new("LocalScript", G2L["1"]);
+G2L["5"]["Name"] = [[Nnaannsnsnsnsns]];
+
+
+-- StarterGui.FerModz.Open.Open
+local function C_4()
+local script = G2L["4"];
+	script.Parent.MouseButton1Click:Connect(function() 
+		keypress(Enum.KeyCode.RightShift)
+		wait(0.01)
+		keyrelease(Enum.KeyCode.RightShift)
+	end)
+end;
+task.spawn(C_4);
+-- StarterGui.FerModz.Nnaannsnsnsnsns
+local function C_5()
+local script = G2L["5"];
+	local function random()
+		local text = ""
+		local abc = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'}
+		local ABC = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'}
+		local rnd = math.random(1,2)
+		for i=1,20 do
+			if rnd == 1 then
+				text=text..abc[math.random(1, #abc)]
+				rnd = math.random(1,2)
+			else
+				text=text..ABC[math.random(1,#ABC)]
+				rnd = math.random(1,2)
+			end
+		end
+		return text
+	end
+	
+	script.Parent.Name = random()
+end;
+task.spawn(C_5);
+
+
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
 
 OrionLib:MakeNotification({
