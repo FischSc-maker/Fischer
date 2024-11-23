@@ -16,6 +16,10 @@ local main = Window:MakeTab({
     PremiumOnly = false;
   })
 
+local Section = main:AddSection({
+	Name = "Farm"
+})
+
 local teleportSpots = {}
 
 local itemSpots = {
